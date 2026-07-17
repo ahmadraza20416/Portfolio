@@ -32,10 +32,10 @@ export default function HeroSection({ profile = {} }) {
             <div className="text-lg sm:text-xl text-[var(--foreground-secondary)] mb-4 h-8">
               <TypingAnimation
                 texts={[
-                  'MERN Stack Developer',
                   'Full Stack Engineer',
-                  'React.js Specialist',
-                  'Node.js Developer',
+                  'GEN AI Developer ',
+                  'AI ML Engineer',
+                  'Chatbot developer',
                 ]}
                 speed={80}
                 deleteSpeed={40}

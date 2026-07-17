@@ -2,13 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sun, Moon, Download } from 'lucide-react';
-import { useTheme } from '@/components/providers/ThemeProvider';
+import { Menu, X, Download } from 'lucide-react';
 
 export default function Navbar({ navItems = [], profile = {} }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -48,13 +46,6 @@ export default function Navbar({ navItems = [], profile = {} }) {
             </button>
           ))}
 
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="p-2 rounded-lg hover:bg-[var(--card)] transition-colors"
-          >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
 
           <a
             href={profile.resumeUrl || '/resume.pdf'}
@@ -68,13 +59,6 @@ export default function Navbar({ navItems = [], profile = {} }) {
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden items-center gap-3">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="p-2 rounded-lg hover:bg-[var(--card)] transition-colors"
-          >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-          </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"

@@ -29,7 +29,7 @@ export default function SkillsSection({ skills = [] }) {
                     alt={skill.name}
                     width={56}
                     height={56}
-                    className="w-14 h-14 object-contain dark:brightness-110"
+                    className="w-14 h-14 object-contain"
                   />
                 ) : (
                   <div className="w-14 h-14 rounded-lg bg-[var(--card)] border border-[var(--card-border)] flex items-center justify-center text-xs font-bold text-[var(--foreground-secondary)]">

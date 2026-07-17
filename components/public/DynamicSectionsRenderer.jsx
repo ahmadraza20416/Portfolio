@@ -24,7 +24,7 @@ export default function DynamicSectionsRenderer({ sections }) {
                 
                 if (block.blockType === 'TEXT') {
                   return (
-                     <div key={key} className="prose dark:prose-invert max-w-none text-[var(--foreground-secondary)] text-lg" dangerouslySetInnerHTML={{ __html: block.content }} />
+                     <div key={key} className="prose max-w-none text-[var(--foreground-secondary)] text-lg" dangerouslySetInnerHTML={{ __html: block.content }} />
                   );
                 }
                 

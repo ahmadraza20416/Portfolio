@@ -97,7 +97,7 @@ export default function AdminProjects() {
               <h3 className="font-semibold">{item.title}</h3>
               <div className="flex flex-wrap gap-1 mt-1">
                 {item.techStack?.map((t) => (
-                  <span key={t} className="text-xs px-2 py-0.5 rounded bg-gray-200 dark:bg-gray-800 text-[var(--foreground-secondary)]">{t}</span>
+                  <span key={t} className="text-xs px-2 py-0.5 rounded bg-gray-200 text-[var(--foreground-secondary)]">{t}</span>
                 ))}
               </div>
             </div>

@@ -73,7 +73,7 @@ export default function ProjectsSection({ projects = [] }) {
                     <span
                       key={tech}
                       className="px-3 py-1 text-xs font-medium rounded-full
-                                 bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+                                 bg-gray-200 text-gray-800"
                     >
                       {tech}
                     </span>

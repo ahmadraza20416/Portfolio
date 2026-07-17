@@ -15,18 +15,6 @@
   --muted: #94a3b8;
 }
 
-.dark {
-  /* Dark Mode - matching Figma */
-  --background: #030712;
-  --background-secondary: #0f172a;
-  --foreground: #f8fafc;
-  --foreground-secondary: #94a3b8;
-  --card: #111827;
-  --card-border: #1f2937;
-  --accent: #3b82f6;
-  --accent-hover: #60a5fa;
-  --muted: #6b7280;
-}
 
 @layer base {
   * {
@@ -80,8 +68,8 @@
 
   .pill-badge {
     @apply inline-flex items-center px-5 py-1.5 rounded-full text-sm font-medium
-           bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-200
-           border border-gray-300 dark:border-gray-700;
+           bg-gray-200 text-gray-800
+           border border-gray-300;
   }
 
   .card-base {
