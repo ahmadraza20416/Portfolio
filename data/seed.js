@@ -3,29 +3,29 @@
 
 export const seedProfile = {
   name: "Ahmad Raza",
-  title: "MERN Stack Developer",
-  bio: "I'm a skilled MERN stack developer with a focus on creating exceptional digital experiences that are fast, accessible, visually appealing, and responsive. Building dynamic, user-friendly web applications is my passion, and I bring proven expertise in full-stack solutions.",
-  aboutText: "I'm a passionate developer who specializes in full stack development (React.js & Node.js). I am very enthusiastic about bringing the technical and visual aspects of digital products to life. User experience, pixel perfect design, and writing clear, readable, highly performant code matter a lot to me.\n\nI began my journey as a web developer, and since then, I've continued to grow and evolve as a developer, taking on new challenges and learning the latest technologies along the way. Now, with expertise in the MERN stack, I'm building cutting-edge web applications that deliver real value.\n\nOne last thing, I'm available for freelance work, so feel free to reach out and say hello! I promise I don't bite 😉",
+  title: "Full-Stack MERN & GenAI Engineer",
+  bio: "Full-stack engineer specializing in MERN stack (React 19, Next.js 15, Node.js, Express, MongoDB) and GenAI chatbot automation pipelines. Currently developing production applications at Symtera Technology.",
+  aboutText: "Hi! I'm Ahmad Raza, a Full-Stack MERN & GenAI Engineer based in Lahore, Pakistan with a degree in Computer Science (BSCS).\n\nI currently build scalable web platforms and intelligent automation software at Symtera Technology. Over the past 3+ years, I've engineered full-stack applications—ranging from charity portals boosting donations by 50% to real-time e-commerce analytics dashboards and GenAI chatbots.\n\nMy philosophy is simple: write clean, type-safe code, optimize for lightning-fast performance (<1s page loads), and deliver intuitive glassmorphic UIs that convert visitors into active clients. Whether you need a brand-new Web App, a GenAI integration, or a performance overhaul, I bring production-ready expertise to every build.",
   aboutBullets: [
     "BS in Computer Science",
-    "Full time developer",
-    "Avid learner",
-    "Aspiring tech entrepreneur"
+    "MERN Stack Developer at Symtera Technology",
+    "GenAI Chatbots & API Automation Specialist",
+    "Available for Freelance & Full-Time Engineering Roles"
   ],
   email: "ahmadraza20416@gmail.com",
   phone: "+923079618398",
   location: "Lahore, Punjab, Pakistan",
   avatarUrl: "/images/profile image.jpeg",
   aboutImageUrl: "/images/profile image.jpeg",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/images/Ahmad_Raza_d.pdf",
   availableForWork: true,
   socialLinks: [
     { platform: "GitHub", url: "https://github.com/AhmadRazaCodeBits", icon: "github" },
     { platform: "LinkedIn", url: "https://linkedin.com/in/ahmad-raza416", icon: "linkedin" },
     { platform: "Twitter", url: "https://twitter.com/", icon: "twitter" }
   ],
-  seoTitle: "Ahmad Raza | MERN Stack Developer Portfolio",
-  seoDescription: "Skilled MERN stack developer with expertise in building dynamic, user-friendly web applications using React.js, Node.js, Next.js, and MongoDB.",
+  seoTitle: "Ahmad Raza | Full-Stack MERN & GenAI Engineer Portfolio",
+  seoDescription: "Skilled MERN stack engineer with expertise in building dynamic web applications, Next.js 15, Node.js, and GenAI chatbot integrations.",
   ogImage: "/images/og-image.jpg"
 };
 
