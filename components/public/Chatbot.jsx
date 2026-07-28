@@ -2,8 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
-import { suggestedQuestions } from '@/lib/chatbot';
+import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
+
+const SUGGESTED_PROMPTS = [
+  'What is Ahmad\'s tech stack?',
+  'Show me Ahmad\'s top projects',
+  'Is Ahmad available for hire?',
+  'How to contact Ahmad?',
+];
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +27,7 @@ export default function Chatbot() {
       setMessages([
         {
           role: 'bot',
-          text: "Hi! 👋 I'm Ahmad's portfolio assistant. Ask me anything about his skills, experience, projects, or how to get in touch!",
+          text: "Hi there! 👋 I'm Ahmad's AI Portfolio Assistant. Ask me anything about his full-stack skills, GenAI projects, experience, or availability!",
         },
       ]);
     }
@@ -43,11 +49,11 @@ export default function Chatbot() {
       });
 
       const data = await res.json();
-      setMessages((prev) => [...prev, { role: 'bot', text: data.reply }]);
+      setMessages((prev) => [...prev, { role: 'bot', text: data.reply || 'Thanks for reaching out! You can contact Ahmad directly via email at ahmadraza20416@gmail.com.' }]);
     } catch {
       setMessages((prev) => [
         ...prev,
-        { role: 'bot', text: 'Sorry, something went wrong. Please try again!' },
+        { role: 'bot', text: 'I am here to help! You can reach Ahmad via email at ahmadraza20416@gmail.com or WhatsApp at +92 307 9618398.' },
       ]);
     } finally {
       setLoading(false);
@@ -61,58 +67,63 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* Chat Bubble */}
+      {/* Floating Toggle Button */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white shadow-lg shadow-blue-500/25 flex items-center justify-center hover:scale-105 transition-transform"
-        whileTap={{ scale: 0.95 }}
-        aria-label="Toggle chatbot"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white shadow-xl shadow-blue-500/30 flex items-center justify-center hover:scale-110 transition-all border border-white/20"
+        whileTap={{ scale: 0.92 }}
+        aria-label="Toggle AI Assistant"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
+        <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-slate-900 animate-ping" />
       </motion.button>
 
-      {/* Chat Window */}
+      {/* Frosted Glass Chatbot Modal Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-48px)] h-[500px] max-h-[calc(100vh-160px)] flex flex-col rounded-2xl overflow-hidden shadow-2xl border border-[var(--card-border)] bg-[var(--background)]"
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed bottom-24 right-6 z-50 w-[360px] max-w-[calc(100vw-32px)] h-[520px] max-h-[calc(100vh-140px)] flex flex-col glass-card border border-[var(--glass-border)] shadow-2xl overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center gap-3 px-5 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-              <Bot size={24} />
+            <div className="flex items-center gap-3 px-5 py-4 bg-gradient-to-r from-blue-600/90 via-indigo-600/90 to-purple-600/90 text-white border-b border-white/10">
+              <div className="w-9 h-9 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                <Bot size={20} />
+              </div>
               <div>
-                <h3 className="font-semibold text-sm">Portfolio Assistant</h3>
-                <p className="text-xs text-white/70">Ask me anything about Ahmad</p>
+                <h3 className="font-bold text-sm flex items-center gap-1.5">
+                  AI Assistant <Sparkles size={14} className="text-amber-300" />
+                </h3>
+                <p className="text-xs text-white/80">Online • Ahmad Raza Portfolio</p>
               </div>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            {/* Messages Area */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-950/20">
               {messages.map((msg, i) => (
                 <div
                   key={i}
                   className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {msg.role === 'bot' && (
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 mt-1">
-                      <Bot size={14} className="text-white" />
+                    <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center flex-shrink-0 text-white text-xs mt-1 shadow-sm">
+                      <Bot size={14} />
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
+                    className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-xs sm:text-sm leading-relaxed whitespace-pre-line ${
                       msg.role === 'user'
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-br-md'
-                        : 'bg-[var(--card)] border border-[var(--card-border)] text-[var(--foreground)] rounded-bl-md'
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-br-none shadow-md'
+                        : 'glass-card border border-[var(--glass-border)] text-[var(--foreground)] rounded-bl-none'
                     }`}
                   >
                     {msg.text}
                   </div>
                   {msg.role === 'user' && (
-                    <div className="w-7 h-7 rounded-full bg-[var(--card)] border border-[var(--card-border)] flex items-center justify-center flex-shrink-0 mt-1">
+                    <div className="w-7 h-7 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] flex items-center justify-center flex-shrink-0 text-[var(--foreground)] mt-1">
                       <User size={14} />
                     </div>
                   )}
@@ -121,14 +132,14 @@ export default function Chatbot() {
 
               {loading && (
                 <div className="flex gap-2 items-start">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0">
-                    <Bot size={14} className="text-white" />
+                  <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center flex-shrink-0 text-white">
+                    <Bot size={14} />
                   </div>
-                  <div className="bg-[var(--card)] border border-[var(--card-border)] px-4 py-3 rounded-2xl rounded-bl-md">
-                    <div className="flex gap-1">
-                      <span className="w-2 h-2 rounded-full bg-[var(--muted)] animate-bounce" style={{ animationDelay: '0ms' }} />
-                      <span className="w-2 h-2 rounded-full bg-[var(--muted)] animate-bounce" style={{ animationDelay: '150ms' }} />
-                      <span className="w-2 h-2 rounded-full bg-[var(--muted)] animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="glass-card px-4 py-3 rounded-2xl rounded-bl-none">
+                    <div className="flex gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-bounce" style={{ animationDelay: '0ms' }} />
+                      <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-bounce" style={{ animationDelay: '150ms' }} />
+                      <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-bounce" style={{ animationDelay: '300ms' }} />
                     </div>
                   </div>
                 </div>
@@ -137,39 +148,39 @@ export default function Chatbot() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Suggested Questions */}
-            {messages.length <= 1 && (
-              <div className="px-4 pb-2">
+            {/* Quick Prompt Suggestions */}
+            {messages.length <= 2 && (
+              <div className="px-4 py-2 bg-[var(--glass-bg)] border-t border-[var(--glass-border)]">
                 <div className="flex flex-wrap gap-1.5">
-                  {suggestedQuestions.map((q) => (
+                  {SUGGESTED_PROMPTS.map((prompt) => (
                     <button
-                      key={q}
-                      onClick={() => sendMessage(q)}
-                      className="text-xs px-3 py-1.5 rounded-full border border-[var(--card-border)] text-[var(--foreground-secondary)] hover:bg-[var(--card)] transition-colors"
+                      key={prompt}
+                      onClick={() => sendMessage(prompt)}
+                      className="text-[11px] px-2.5 py-1 rounded-lg glass-card text-[var(--foreground-secondary)] hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all"
                     >
-                      {q}
+                      {prompt}
                     </button>
                   ))}
                 </div>
               </div>
             )}
 
-            {/* Input */}
-            <form onSubmit={handleSubmit} className="flex items-center gap-2 p-3 border-t border-[var(--card-border)]">
+            {/* Input Form */}
+            <form onSubmit={handleSubmit} className="flex items-center gap-2 p-3 bg-[var(--glass-bg)] border-t border-[var(--glass-border)]">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Type your question..."
-                className="flex-1 px-4 py-2.5 rounded-full bg-[var(--card)] border border-[var(--card-border)] text-sm text-[var(--foreground)] placeholder:text-[var(--muted)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
+                placeholder="Ask about skills, projects, contact..."
+                className="glass-input flex-1 px-3.5 py-2 text-xs"
                 disabled={loading}
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
-                className="w-10 h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white flex items-center justify-center disabled:opacity-50 hover:opacity-90 transition-opacity"
+                className="btn-primary p-2.5 rounded-xl disabled:opacity-50"
               >
-                <Send size={16} />
+                <Send size={15} />
               </button>
             </form>
           </motion.div>

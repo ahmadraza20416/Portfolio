@@ -140,11 +140,11 @@ export const seedTestimonials = [
 ];
 
 export const seedNavItems = [
-  { label: "About", href: "#about", order: 1, visible: true },
-  { label: "Skills", href: "#skills", order: 2, visible: true },
-  { label: "Experience", href: "#experience", order: 3, visible: true },
-  { label: "Work", href: "#work", order: 4, visible: true },
-  { label: "Testimonials", href: "#testimonials", order: 5, visible: true },
+  { label: "Experience", href: "#experience", order: 1, visible: true },
+  { label: "Projects", href: "#projects", order: 2, visible: true },
+  { label: "Skills", href: "#skills", order: 3, visible: true },
+  { label: "Services", href: "#services", order: 4, visible: true },
+  { label: "About", href: "#about", order: 5, visible: true },
   { label: "Contact", href: "#contact", order: 6, visible: true },
 ];
 
