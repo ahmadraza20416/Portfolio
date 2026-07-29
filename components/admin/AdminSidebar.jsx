@@ -16,7 +16,9 @@ import {
   ExternalLink,
   Layers,
   Sparkles,
-  ShieldCheck
+  ShieldCheck,
+  Calculator,
+  Video
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -24,6 +26,9 @@ const menuItems = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Profile', href: '/admin/profile', icon: User },
   { label: 'Projects', href: '/admin/projects', icon: FolderKanban },
+  { label: 'Services', href: '/admin/services', icon: Sparkles },
+  { label: 'Estimator & Currency', href: '/admin/estimator', icon: Calculator },
+  { label: 'Strategy Calls', href: '/admin/meetings', icon: Video },
   { label: 'Skills Stack', href: '/admin/skills', icon: Code },
   { label: 'Experience', href: '/admin/experience', icon: Briefcase },
   { label: 'Testimonials', href: '/admin/testimonials', icon: MessageSquare },
