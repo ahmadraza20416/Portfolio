@@ -28,8 +28,7 @@ export default function AdminServices() {
       setServices(data);
     } catch {
       toast.error('Failed to load services');
-    } font-bold
-    finally {
+    } finally {
       setLoading(false);
     }
   };
