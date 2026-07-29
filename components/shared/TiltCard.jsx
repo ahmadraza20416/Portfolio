@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 export default function TiltCard({
   children,
@@ -11,38 +11,46 @@ export default function TiltCard({
   onClick,
 }) {
   const cardRef = useRef(null);
+  const animFrameRef = useRef(null);
   const [transform, setTransform] = useState(`perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`);
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    
-    // Relative coordinates (-0.5 to 0.5)
-    const mouseX = (e.clientX - rect.left) / width - 0.5;
-    const mouseY = (e.clientY - rect.top) / height - 0.5;
+    const clientX = e.clientX;
+    const clientY = e.clientY;
 
-    // Calculate 3D tilt rotation
-    const rotateX = -mouseY * maxTilt * 2;
-    const rotateY = mouseX * maxTilt * 2;
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
 
-    setTransform(
-      `perspective(${perspective}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`
-    );
+    animFrameRef.current = requestAnimationFrame(() => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
 
-    if (glare) {
-      const glareX = ((e.clientX - rect.left) / width) * 100;
-      const glareY = ((e.clientY - rect.top) / height) * 100;
-      setGlarePos({ x: glareX, y: glareY, opacity: 0.45 });
-    }
-  };
+      const mouseX = (clientX - rect.left) / width - 0.5;
+      const mouseY = (clientY - rect.top) / height - 0.5;
 
-  const handleMouseLeave = () => {
+      const rotateX = -mouseY * maxTilt * 2;
+      const rotateY = mouseX * maxTilt * 2;
+
+      setTransform(
+        `perspective(${perspective}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`
+      );
+
+      if (glare) {
+        const glareX = ((clientX - rect.left) / width) * 100;
+        const glareY = ((clientY - rect.top) / height) * 100;
+        setGlarePos({ x: glareX, y: glareY, opacity: 0.45 });
+      }
+    });
+  }, [maxTilt, perspective, glare]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     setTransform(`perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`);
     setGlarePos((prev) => ({ ...prev, opacity: 0 }));
-  };
+  }, [perspective]);
 
   return (
     <div

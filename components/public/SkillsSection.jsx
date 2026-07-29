@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Sparkles } from 'lucide-react';
 import SectionHeader from '@/components/shared/SectionHeader';
@@ -28,17 +28,17 @@ export default function SkillsSection({ skills = [] }) {
     { name: 'Framer Motion', category: 'Frontend', level: 90, iconUrl: '' },
   ];
 
-  const skillList = skills.length > 0 ? skills : defaultSkills;
+  const filteredSkills = useMemo(() => {
+    const list = skills.length > 0 ? skills : defaultSkills;
+    return list.filter((skill) => {
+      const matchesCategory =
+        activeCategory === 'All' ||
+        (skill.category && skill.category.toLowerCase().includes(activeCategory.toLowerCase()));
 
-  const filteredSkills = skillList.filter((skill) => {
-    const matchesCategory =
-      activeCategory === 'All' ||
-      (skill.category && skill.category.toLowerCase().includes(activeCategory.toLowerCase())) ||
-      activeCategory === 'All';
-
-    const matchesSearch = skill.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+      const matchesSearch = skill.name.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [skills, activeCategory, searchQuery]);
 
   return (
     <section id="skills" className="relative py-4">

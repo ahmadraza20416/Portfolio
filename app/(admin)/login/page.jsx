@@ -27,7 +27,7 @@ export default function LoginPage() {
         toast.error('Invalid email or password');
       } else {
         toast.success('Welcome back!');
-        router.push('/admin');
+        window.location.href = '/admin';
       }
     } catch {
       toast.error('Something went wrong');
