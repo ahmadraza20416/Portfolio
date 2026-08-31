@@ -6,6 +6,7 @@ import { ExternalLink, Github, Sparkles, Eye } from 'lucide-react';
 import SectionHeader from '@/components/shared/SectionHeader';
 import TiltCard from '@/components/shared/TiltCard';
 import ProjectModal from '@/components/public/ProjectModal';
+import { seedProjects } from '@/data/seed';
 
 const PROJECT_CATEGORIES = ['All', 'Full Stack', 'AI & Automation', 'Web Apps'];
 
@@ -13,58 +14,7 @@ export default function ProjectsSection({ projects = [] }) {
   const [selectedProject, setSelectedProject] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
 
-  const defaultProjects = [
-    {
-      _id: 'p1',
-      title: 'GenAI Enterprise Chatbot System',
-      description: 'An AI-powered conversational chatbot platform engineered with Next.js, Node.js, OpenAI APIs, and MongoDB for fast business lead qualification.',
-      category: 'AI & Automation',
-      techStack: ['Next.js', 'React', 'Node.js', 'OpenAI API', 'MongoDB', 'Tailwind'],
-      imageUrl: '/images/project-2.jpg',
-      githubUrl: 'https://github.com/AhmadRazaCodeBits',
-      liveUrl: '#',
-      features: [
-        'Real-time streaming AI chatbot responses',
-        'Custom knowledge-base prompt engineering',
-        'Visitor lead capture & automated CRM logging',
-        'Full administrative analytics dashboard',
-      ],
-    },
-    {
-      _id: 'p2',
-      title: 'Humanity Edge Charity Portal',
-      description: 'A full-stack charity & donation platform with volunteer management, campaigns, Stripe payment integration, and blog management.',
-      category: 'Full Stack',
-      techStack: ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'Stripe'],
-      imageUrl: '/images/project-1.jpg',
-      githubUrl: 'https://github.com/AhmadRazaCodeBits',
-      liveUrl: '#',
-      features: [
-        'Volunteer management & campaign tracking',
-        '+50% donor engagement and campaign analytics',
-        'Stripe payment gateway integration',
-        'Responsive mobile UI & administrative CMS',
-      ],
-    },
-    {
-      _id: 'p3',
-      title: 'E-Commerce SaaS Automation Dashboard',
-      description: 'A high-performance e-commerce management dashboard supporting real-time inventory sync, order tracking, and dynamic billing analytics.',
-      category: 'Web Apps',
-      techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'Chart.js'],
-      imageUrl: '/images/project-3.jpg',
-      githubUrl: 'https://github.com/AhmadRazaCodeBits',
-      liveUrl: '#',
-      features: [
-        'Dynamic data visualizers & financial charts',
-        'Role-based authentication & permissions',
-        'Exportable CSV & PDF inventory reports',
-        'Responsive mobile-first dashboard layout',
-      ],
-    },
-  ];
-
-  const projectList = projects.length > 0 ? projects : defaultProjects;
+  const projectList = (projects && projects.length > 0) ? projects : seedProjects;
 
   const filteredProjects = projectList.filter((p) => {
     if (activeCategory === 'All') return true;

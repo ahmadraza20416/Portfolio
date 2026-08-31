@@ -4,6 +4,7 @@
 import mongoose from 'mongoose';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { seedProjects } from './seed.js';
 
 // Load env using built-in node feature
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -37,7 +38,8 @@ const ExperienceSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const ProjectSchema = new mongoose.Schema({
-  title: String, description: String, techStack: [String],
+  title: String, description: String, category: String,
+  techStack: [String], features: [String],
   imageUrl: String, githubUrl: String, liveUrl: String,
   order: Number, visible: Boolean,
 }, { timestamps: true });
@@ -99,12 +101,6 @@ const seedSkills = [
 const seedExperience = [
   { company: "Symtera Technology", companyLogo: "", role: "MERN Stack Developer", startDate: "Feb 2026", endDate: "Present", location: "Lahore", description: ["Develop and maintain scalable front-end and back-end solutions for production applications.", "Write clean, efficient, and reusable code for real-world projects.", "Collaborate with team members to deliver high-quality software on deadline."], order: 1, visible: true },
   { company: "Tiers Limited", companyLogo: "", role: "MERN Stack Internee", startDate: "May 2023", endDate: "Aug 2023", location: "Lahore", description: ["Developed MERN stack (MongoDB, Express.js, React.js, Node.js) web applications.", "Applied user-centered design principles to improve UX across multiple projects."], order: 2, visible: true },
-];
-
-const seedProjects = [
-  { title: "Humanity Edge Portal", description: "Built a full-stack MERN charity website with volunteer management, campaigns, secure payments, and a comprehensive admin panel. Boosted donor engagement via blogs and videos, resulting in +50% donations and +30% volunteer retention.", techStack: ["React.js", "Node.js", "MongoDB", "Express.js", "Stripe"], imageUrl: "/images/project-1.jpg", githubUrl: "https://github.com/AhmadRazaCodeBits", liveUrl: "#", order: 1, visible: true },
-  { title: "Ecommerce Website", description: "Built a MERN stack e-commerce website with authentication, product listings, cart, and secure payments. Improved UX with responsive design and performance optimization, boosting engagement and sales.", techStack: ["React.js", "Node.js", "MongoDB", "Express.js", "Redux"], imageUrl: "/images/project-2.jpg", githubUrl: "https://github.com/AhmadRazaCodeBits", liveUrl: "#", order: 2, visible: true },
-  { title: "Attendance App", description: "Developed a MERN-based student management system with full admin CRUD functionality. Enabled student login via admin-provided credentials and attendance tracking with check-in/check-out functionality.", techStack: ["React.js", "Node.js", "MongoDB", "Express.js"], imageUrl: "/images/project-3.jpg", githubUrl: "https://github.com/AhmadRazaCodeBits", liveUrl: "#", order: 3, visible: true },
 ];
 
 const seedTestimonials = [
