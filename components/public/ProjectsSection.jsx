@@ -59,37 +59,50 @@ export default function ProjectsSection({ projects = [] }) {
             >
               <TiltCard className="h-full flex flex-col justify-between overflow-hidden group">
                 <div>
-                  {/* Thumbnail / Visual Header */}
+                  {/* Thumbnail / Visual Header with Browser Chrome */}
                   <div
                     onClick={() => setSelectedProject(project)}
-                    className="relative h-48 w-full bg-gradient-to-br from-slate-800 to-slate-950 overflow-hidden cursor-pointer border-b border-[var(--glass-border)]"
+                    className="relative h-52 w-full bg-slate-950 overflow-hidden cursor-pointer border-b border-[var(--glass-border)] flex flex-col"
                   >
-                    {project.imageUrl ? (
+                    {/* Mini Browser Bar */}
+                    <div className="flex items-center justify-between px-3 py-1.5 bg-slate-900/90 border-b border-white/10 z-10 text-[10px] text-slate-400">
+                      <div className="flex items-center gap-1.5">
+                        <span className="w-2 h-2 rounded-full bg-rose-500/90 inline-block" />
+                        <span className="w-2 h-2 rounded-full bg-amber-500/90 inline-block" />
+                        <span className="w-2 h-2 rounded-full bg-emerald-500/90 inline-block" />
+                      </div>
+                      <div className="truncate max-w-[180px] bg-slate-800/80 px-2 py-0.5 rounded text-[10px] text-slate-300 font-mono">
+                        {project.liveUrl && project.liveUrl !== '#'
+                          ? project.liveUrl.replace(/^https?:\/\//, '')
+                          : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, '-')}.app`}
+                      </div>
+                      <div className="w-6" />
+                    </div>
+
+                    {/* Screenshot Preview Image */}
+                    <div className="relative flex-1 w-full overflow-hidden bg-slate-900">
                       <img
-                        src={project.imageUrl}
+                        src={
+                          project.imageUrl ||
+                          (project.liveUrl && project.liveUrl !== '#'
+                            ? `https://image.thum.io/get/width/1024/crop/700/noanimate/${encodeURIComponent(project.liveUrl)}`
+                            : '/images/og-image.svg')
+                        }
                         alt={project.title}
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => {
+                          if (project.liveUrl && project.liveUrl !== '#' && !e.currentTarget.src.includes('thum.io')) {
+                            e.currentTarget.src = `https://image.thum.io/get/width/1024/crop/700/noanimate/${encodeURIComponent(project.liveUrl)}`;
+                          }
+                        }}
+                        className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       />
-                    ) : (
-                      <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-gradient-to-br from-blue-900/40 via-purple-900/30 to-slate-900/60 group-hover:scale-105 transition-transform duration-500">
-                        <div className="glass-card p-4 w-full max-w-[200px] space-y-2">
-                          <div className="flex gap-1.5 mb-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
-                          </div>
-                          <div className="h-2.5 bg-white/20 rounded-full w-3/4" />
-                          <div className="h-2 bg-white/10 rounded-full w-1/2" />
-                          <div className="h-2 bg-white/10 rounded-full w-5/6" />
-                        </div>
-                      </div>
-                    )}
+                    </div>
 
                     {/* Quick Eye Lightbox Overlay */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-medium text-xs">
-                      <Eye size={16} /> View Details
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-medium text-xs backdrop-blur-[2px]">
+                      <Eye size={16} /> View Details & Live Demo
                     </div>
                   </div>
 

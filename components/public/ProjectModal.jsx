@@ -35,28 +35,40 @@ export default function ProjectModal({ project, onClose }) {
             <X size={20} />
           </button>
 
-          {/* Project Image Preview */}
-          <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden mb-6 bg-gradient-to-br from-slate-800 to-slate-950 border border-[var(--glass-border)]">
-            {project.imageUrl ? (
+          {/* Project Image Preview with Browser Header */}
+          <div className="relative h-64 sm:h-80 rounded-2xl overflow-hidden mb-6 bg-slate-950 border border-[var(--glass-border)] flex flex-col">
+            {/* Mini Browser Bar */}
+            <div className="flex items-center justify-between px-4 py-2 bg-slate-900/90 border-b border-white/10 text-xs text-slate-400">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
+              </div>
+              <div className="truncate max-w-[280px] bg-slate-800 px-3 py-0.5 rounded text-xs text-slate-300 font-mono">
+                {project.liveUrl && project.liveUrl !== '#'
+                  ? project.liveUrl
+                  : `${project.title.toLowerCase().replace(/[^a-z0-9]/g, '-')}.app`}
+              </div>
+              <div className="w-8" />
+            </div>
+
+            <div className="relative flex-1 w-full overflow-hidden bg-slate-900">
               <img
-                src={project.imageUrl}
+                src={
+                  project.imageUrl ||
+                  (project.liveUrl && project.liveUrl !== '#'
+                    ? `https://image.thum.io/get/width/1024/crop/700/noanimate/${encodeURIComponent(project.liveUrl)}`
+                    : '/images/og-image.svg')
+                }
                 alt={project.title}
+                onError={(e) => {
+                  if (project.liveUrl && project.liveUrl !== '#' && !e.currentTarget.src.includes('thum.io')) {
+                    e.currentTarget.src = `https://image.thum.io/get/width/1024/crop/700/noanimate/${encodeURIComponent(project.liveUrl)}`;
+                  }
+                }}
                 className="w-full h-full object-cover object-top"
               />
-            ) : (
-              <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-gradient-to-br from-blue-900/40 via-purple-900/30 to-slate-900/60">
-                <div className="glass-card p-6 w-full max-w-md space-y-3">
-                  <div className="flex gap-2 mb-2">
-                    <span className="w-3 h-3 rounded-full bg-rose-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-                    <span className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                  </div>
-                  <div className="h-4 bg-white/20 rounded-full w-3/4" />
-                  <div className="h-3 bg-white/10 rounded-full w-1/2" />
-                  <div className="h-3 bg-white/10 rounded-full w-5/6" />
-                </div>
-              </div>
-            )}
+            </div>
           </div>
 
           {/* Project Title & Badge */}

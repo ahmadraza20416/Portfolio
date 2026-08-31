@@ -82,7 +82,7 @@ export const seedProjects = [
     description: "All-in-one directory and productivity platform featuring dynamic AI search, custom bookmarking, live tech news feed, and system health monitoring telemetry.",
     category: "AI & Automation",
     techStack: ["Next.js 15", "TypeScript", "Prisma", "MongoDB", "Tailwind CSS"],
-    imageUrl: "/images/projects/genai-tools.svg",
+    imageUrl: "/images/projects/genai-tools.png",
     githubUrl: "https://github.com/ahmadraza20416/gen-ai-tools",
     liveUrl: "https://gen-ai-tools-lake.vercel.app",
     features: [
@@ -99,7 +99,7 @@ export const seedProjects = [
     description: "Client-side private document retrieval and embedding engine running Transformers.js and ONNX runtime directly in the browser without sending data to external servers.",
     category: "AI & Automation",
     techStack: ["Vite", "React", "Transformers.js", "ONNX", "Tailwind CSS"],
-    imageUrl: "/images/projects/edgerag.svg",
+    imageUrl: "/images/projects/edgerag.png",
     githubUrl: "https://github.com/ahmadraza20416/edgerag",
     liveUrl: "https://ml-tau-one.vercel.app",
     features: [
@@ -116,7 +116,7 @@ export const seedProjects = [
     description: "Autonomous career intelligence and outreach platform featuring AI lead scoring, ATS resume optimization, pitch generation, and multi-channel cadence sequences.",
     category: "AI & Automation",
     techStack: ["Next.js 14", "TypeScript", "OpenAI API", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/images/projects/huntforge.svg",
+    imageUrl: "/images/projects/huntforge.png",
     githubUrl: "https://github.com/ahmadraza20416/huntforge-ai",
     liveUrl: "https://huntforge-ai.vercel.app",
     features: [
@@ -133,7 +133,7 @@ export const seedProjects = [
     description: "Real-time interactive social space featuring proximity-based audio/chat radar, group venue voting, live location sharing, and WebRTC streaming.",
     category: "Full Stack",
     techStack: ["Next.js 14", "WebRTC", "MongoDB", "Tailwind CSS", "Framer Motion"],
-    imageUrl: "/images/projects/dropin.svg",
+    imageUrl: "/images/projects/dropin.png",
     githubUrl: "https://github.com/ahmadraza20416/dropin-social",
     liveUrl: "https://dropin-social.vercel.app",
     features: [
@@ -150,7 +150,7 @@ export const seedProjects = [
     description: "Enterprise multi-vendor retail & grocery platform featuring real-time POS, vendor assortment management, automated inventory tracking, and mobile apps.",
     category: "Full Stack",
     techStack: ["Next.js 16", "Node.js", "Express", "MongoDB", "React Native"],
-    imageUrl: "/images/projects/mgs.svg",
+    imageUrl: "/images/projects/mgs.png",
     githubUrl: "https://github.com/ahmadraza20416/MGS-Madni-gernel-store",
     liveUrl: "https://madnigs.vercel.app",
     features: [
@@ -167,7 +167,7 @@ export const seedProjects = [
     description: "Interactive slide creation platform with real-time dnd-kit deck reordering, automated slide formatting, and presentation exports.",
     category: "Web Apps",
     techStack: ["Vite", "React 19", "Express", "DND Kit", "Tailwind CSS"],
-    imageUrl: "/images/projects/slideedge.svg",
+    imageUrl: "/images/projects/slideedge.png",
     githubUrl: "https://github.com/ahmadraza20416/presentation-generator",
     liveUrl: "https://slideedge-client.vercel.app",
     features: [
@@ -184,7 +184,7 @@ export const seedProjects = [
     description: "Enterprise HR management platform featuring employee lifecycle management, onboarding wizards, attendance tracking, leave workflows, and payroll boards.",
     category: "Full Stack",
     techStack: ["Turborepo", "Vite React", "Fastify", "Redux Toolkit", "Material UI"],
-    imageUrl: "/images/projects/ninja-hr.svg",
+    imageUrl: "/images/projects/ninja-hr.png",
     githubUrl: "https://github.com/ahmadraza20416/ninja-hr",
     liveUrl: "https://ninja-hr-web.vercel.app",
     features: [
@@ -201,7 +201,7 @@ export const seedProjects = [
     description: "Personal finance and collaborative Khatta ledger tracking app with spending trend charts, budget pacing gauges, and debt settlement records.",
     category: "Web Apps",
     techStack: ["Next.js 14", "MongoDB", "Recharts", "Zustand", "Tailwind CSS"],
-    imageUrl: "/images/projects/expense-tracker.svg",
+    imageUrl: "/images/projects/expense-tracker.png",
     githubUrl: "https://github.com/ahmadraza20416/expense-tracker",
     liveUrl: "https://next-expense-tracker-tau-roan.vercel.app",
     features: [
@@ -218,7 +218,7 @@ export const seedProjects = [
     description: "Advanced dual-camera capture, hand gesture tracking, real-time media layer compositing, and visual effect filters.",
     category: "Web Apps",
     techStack: ["Vite", "React", "MediaPipe", "Canvas API", "Tailwind CSS"],
-    imageUrl: "/images/projects/duocam.svg",
+    imageUrl: "/images/projects/duocam.png",
     githubUrl: "https://github.com/ahmadraza20416/duocam",
     liveUrl: "https://duocam-web.vercel.app",
     features: [
@@ -235,7 +235,7 @@ export const seedProjects = [
     description: "Ultra-low-latency real-time voice triage agent with AssemblyAI streaming STT, multi-agent dispatch coordination, and telemetry dashboards.",
     category: "AI & Automation",
     techStack: ["Python", "FastAPI", "AssemblyAI", "Groq", "SQLite"],
-    imageUrl: "/images/projects/aegis-voice.svg",
+    imageUrl: "/images/projects/aegis-voice.png",
     githubUrl: "https://github.com/ahmadraza20416/labab-aegis-voice-agent",
     liveUrl: "https://labab-voice-agent.vercel.app",
     features: [
@@ -252,7 +252,7 @@ export const seedProjects = [
     description: "Modern Android virtualization manager and emulator built with C# .NET 8 WPF, multi-core acceleration, and keymapping support.",
     category: "Full Stack",
     techStack: ["C# .NET 8", "WPF", "Android SDK", "PowerShell"],
-    imageUrl: "/images/projects/aerodroid.svg",
+    imageUrl: "/images/projects/aerodroid.png",
     githubUrl: "https://github.com/ahmadraza20416/Aerodroid",
     liveUrl: "https://aerodroid-web.vercel.app",
     features: [
@@ -269,7 +269,7 @@ export const seedProjects = [
     description: "Algorithmic trading bot with multi-timeframe volatility engines, Monte Carlo risk simulation, gamma exposure filters, and Model Context Protocol (MCP) server.",
     category: "AI & Automation",
     techStack: ["Python", "Alpaca API", "MCP Protocol", "Pandas", "NumPy"],
-    imageUrl: "/images/projects/alpaca-trading.svg",
+    imageUrl: "/images/projects/alpaca-trading.png",
     githubUrl: "https://github.com/ahmadraza20416/labab-alpaca-trading-agent",
     liveUrl: "https://github.com/ahmadraza20416/labab-alpaca-trading-agent",
     features: [
@@ -286,7 +286,7 @@ export const seedProjects = [
     description: "End-to-end automated job hunting platform with ATS resume parser, LinkedIn feed scrapers, intelligent scoring, and candidate CRM dashboard.",
     category: "AI & Automation",
     techStack: ["Python", "Flask", "Vite React", "Gemini AI", "Tailwind CSS"],
-    imageUrl: "/images/projects/autojobapply.svg",
+    imageUrl: "/images/projects/autojobapply.png",
     githubUrl: "https://github.com/ahmadraza20416/auto-job-apply-bot",
     liveUrl: "https://autojobapplybot-web.vercel.app",
     features: [
