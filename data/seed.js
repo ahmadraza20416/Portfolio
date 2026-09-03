@@ -87,9 +87,11 @@ export const seedProjects = [
     liveUrl: "https://deskmind-ai.netlify.app",
     features: [
       "Autonomous Playwright Chromium browser navigation & media streaming",
-      "Native Windows desktop app execution, window focusing, and hotkey automation",
-      "Interactive 3D WebGL neural core with orbital platform satellites (Three.js)",
-      "Multi-agent swarm coordination, diff-first safety governance, and offline vault"
+      "Real-time desktop screen vision stream with interactive click-to-dispatch automation",
+      "Interactive 3D WebGL spatial command deck with Raycasting & telemetry cards (Three.js)",
+      "Hands-free conversational voice copilot with real-time soundwave visualization",
+      "Visual Workflow Studio for drag-and-drop pipelines with PowerShell/.bat script export",
+      "Multi-agent swarm coordination, diff-first safety governance, and webhook trigger API"
     ],
     order: 0,
     visible: true
