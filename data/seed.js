@@ -87,6 +87,7 @@ export const seedProjects = [
     liveUrl: "https://deskmind-ai.netlify.app",
     features: [
       "Autonomous Playwright Chromium browser navigation & media streaming",
+      "AutoClaw deep web crawler & DOM entity harvester with CSV/JSON dataset export",
       "Real-time desktop screen vision stream with interactive click-to-dispatch automation",
       "Interactive 3D WebGL spatial command deck with Raycasting & telemetry cards (Three.js)",
       "Hands-free conversational voice copilot with real-time soundwave visualization",
