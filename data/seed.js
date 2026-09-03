@@ -78,6 +78,23 @@ export const seedExperience = [
 
 export const seedProjects = [
   {
+    title: "DeskMind - Frontier Autonomous AI Agent",
+    description: "Production-grade autonomous AI agent system featuring Playwright web automation, Windows desktop control, multi-agent swarm orchestration, and an interactive 3D WebGL neural core.",
+    category: "AI & Automation",
+    techStack: ["TypeScript", "Playwright", "Three.js", "Electron", "Vite", "Tailwind CSS"],
+    imageUrl: "/images/projects/genai-tools.png",
+    githubUrl: "https://github.com/ahmadraza20416/deskmind-ai",
+    liveUrl: "https://deskmind-ai.netlify.app",
+    features: [
+      "Autonomous Playwright Chromium browser navigation & media streaming",
+      "Native Windows desktop app execution, window focusing, and hotkey automation",
+      "Interactive 3D WebGL neural core with orbital platform satellites (Three.js)",
+      "Multi-agent swarm coordination, diff-first safety governance, and offline vault"
+    ],
+    order: 0,
+    visible: true
+  },
+  {
     title: "GenAI Tools Directory & Hub",
     description: "All-in-one directory and productivity platform featuring dynamic AI search, custom bookmarking, live tech news feed, and system health monitoring telemetry.",
     category: "AI & Automation",
